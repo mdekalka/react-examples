@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import { generateId } from "../utils/utils"
+import { generateId } from "../../utils"
 import withUsers, { InjectedProps } from "./withUsers"
 import withUsersParams from "./withUsersParams"
 
