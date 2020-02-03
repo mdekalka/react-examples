@@ -1,16 +1,13 @@
 import React, { useState } from "react"
 
 import { generateId } from "../utils/utils"
-import withUsers, { User } from "./withUsers"
+import withUsers, { User, InjectedProps } from "./withUsers"
 
 interface Props {
   title: string
-  users: User[]
-  onUserAdd: (user: User) => void
-  onUserRemove: (id: string) => void
 }
 
-const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props) => {
+const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props & InjectedProps) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -27,6 +24,8 @@ const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props) => {
     }
 
     onUserAdd({ id: generateId(), name, email })
+    setName('')
+    setEmail('')
   }
 
   return (
@@ -45,7 +44,7 @@ const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props) => {
       <br/>
       <ul>
         {users.map(user => (
-          <li>
+          <li key={user.id}>
             <div>{user.name} --- {user.email}</div>
             <button onClick={() => onUserRemove(user.id)} >remove user</button>
           </li>

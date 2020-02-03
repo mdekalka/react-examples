@@ -6,7 +6,7 @@ import { UsersHOC } from "./components/HOCs/WrapperComponent"
 const App = () => {
   return (
     <div className="App">
-        <UsersHOC title="With users HOC" />
+      <UsersHOC title="With users HOC" />
     </div>
   );
 }

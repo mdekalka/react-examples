@@ -30,7 +30,7 @@ const normalizeUsers = (users: any[]): User[] => {
   }))
 }
 
-const withUsers = <P extends InjectedProps>(WrapperComponent: React.ComponentType<P>) => {
+const withUsersParams = <P extends InjectedProps>(WrapperComponent: React.ComponentType<P>) => {
   class WithUsers extends React.Component<Subtract<P, InjectedProps>, State> {
     state: State = {
       users: [],
@@ -88,4 +88,4 @@ const withUsers = <P extends InjectedProps>(WrapperComponent: React.ComponentTyp
   return WithUsers
 }
 
-export default withUsers
+export default withUsersParams
