@@ -1,21 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 
 import { User } from "../../typings/types"
 import { normalizeUsers } from "../../utils"
 
-interface State {
-  users: User[]
-  onUserAdd: (user: User) => void
-  onUserRemove: (id: string) => void
-}
-
-interface Props {
-  url: string
-  resultCount: number
-  children: (state: State) => React.ReactElement
-}
-
-const WithUsers = ({ url, resultCount, children }: Props) => {
+const useUsers = (url: string, resultCount: number) => {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -48,25 +36,13 @@ const WithUsers = ({ url, resultCount, children }: Props) => {
     setUsers(users => users.filter(({ id }) => id !== userId ))
   }, [])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>{error}</div>
-  }
-
-  const state: State = {
+  return {
     users,
+    loading,
+    error,
     onUserAdd,
     onUserRemove
   }
-
-  return (
-    <>
-      {children(state)}
-    </>
-  )
 }
 
-export default WithUsers
+export default useUsers

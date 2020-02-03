@@ -1,12 +1,9 @@
 import React from "react"
 
-const API_URL = "https://api.randomuser.me/?results=10"
+import { User } from "../../typings/types"
+import { normalizeUsers } from "../../utils"
 
-export interface User {
-  id: string
-  name: string
-  email: string
-}
+const API_URL = "https://api.randomuser.me/?results=10"
 
 export interface InjectedProps {
   users: User[]
@@ -18,16 +15,6 @@ interface State {
   users: User[]
   loading: boolean
   error: string | null
-}
-
-const normalizeUsers = (users: any[]): User[] => {
-  if (!users) return []
-
-  return users.map(user => ({
-    id: user.id.value,
-    name: `${user.name.first} ${user.name.last}`,
-    email: user.email
-  }))
 }
 
 const withUsers = <P extends InjectedProps>(WrapperComponent: React.ComponentType<P>) => {

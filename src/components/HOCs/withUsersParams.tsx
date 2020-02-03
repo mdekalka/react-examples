@@ -1,10 +1,7 @@
 import React from "react"
 
-export interface User {
-  id: string
-  name: string
-  email: string
-}
+import { User } from "../../typings/types"
+import { normalizeUsers } from "../../utils"
 
 export interface InjectedProps {
   users: User[]
@@ -21,16 +18,6 @@ interface State {
 interface Options {
   url: string
   resultCount: number
-}
-
-const normalizeUsers = (users: any[]): User[] => {
-  if (!users) return []
-
-  return users.map(user => ({
-    id: user.id.value,
-    name: `${user.name.first} ${user.name.last}`,
-    email: user.email
-  }))
 }
 
 // We can pass any options we want into the HOC, we also could pass it after <WrapperComponent>, but it's more clean way
