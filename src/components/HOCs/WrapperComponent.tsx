@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 
 import { generateId } from "../utils/utils"
-import withUsers, { User, InjectedProps } from "./withUsers"
+import withUsers, { InjectedProps } from "./withUsers"
+import withUsersParams from "./withUsersParams"
 
 interface Props {
   title: string
@@ -57,3 +58,4 @@ const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props & Inj
 export default WrapperComponent
 
 export const UsersHOC = withUsers(WrapperComponent)
+export const UsersParamsHOC = withUsersParams({ url:"https://api.randomuser.me", resultCount: 5 })(WrapperComponent)

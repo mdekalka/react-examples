@@ -1,7 +1,5 @@
 import React from "react"
 
-const API_URL = "https://api.randomuser.me/?results=10"
-
 export interface User {
   id: string
   name: string
@@ -20,6 +18,11 @@ interface State {
   error: string | null
 }
 
+interface Options {
+  url: string
+  resultCount: number
+}
+
 const normalizeUsers = (users: any[]): User[] => {
   if (!users) return []
 
@@ -30,7 +33,8 @@ const normalizeUsers = (users: any[]): User[] => {
   }))
 }
 
-const withUsersParams = <P extends InjectedProps>(WrapperComponent: React.ComponentType<P>) => {
+// We can pass any options we want into the HOC, we also could pass it after <WrapperComponent>, but it's more clean way
+const withUsersParams = (options: Options) => <P extends InjectedProps>(WrapperComponent: React.ComponentType<P>) => {
   class WithUsers extends React.Component<Subtract<P, InjectedProps>, State> {
     state: State = {
       users: [],
@@ -44,9 +48,10 @@ const withUsersParams = <P extends InjectedProps>(WrapperComponent: React.Compon
 
     async fetchUsers() {
       this.setState({ loading: true })
+      const url = `${options.url}/?results=${options.resultCount}`
 
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(url)
         const data = await response.json()
 
         this.setState({ users: normalizeUsers(data.results) })
