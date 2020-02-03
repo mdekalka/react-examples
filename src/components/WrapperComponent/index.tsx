@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import { generateId } from "../../utils"
-import { InjectedProps } from "../HOCs/withUsers"
+import { InjectedProps } from "../../typings/types"
 
 interface Props {
   title: string

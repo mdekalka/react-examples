@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 
-import { UsersHOC, UsersParamsHOC } from "./components/HOCs"
-import { Users } from "./components/RenderProps"
-import { Users as UsersHooks } from "./components/hooks"
+import { UsersHOC, UsersParamsHOC } from "./components/UsersHOC"
+import { Users } from "./components/UsersRenderProps"
+import { Users as UsersHooks } from "./components/UsersHook"
 
 const App = () => {
   return (

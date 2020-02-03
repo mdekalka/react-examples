@@ -1,13 +1,7 @@
 import React from "react"
 
-import { User } from "../../typings/types"
+import { User, InjectedProps } from "../../typings/types"
 import { normalizeUsers } from "../../utils"
-
-export interface InjectedProps {
-  users: User[]
-  onUserAdd: (user: User) => void
-  onUserRemove: (id: string) => void
-}
 
 interface State {
   users: User[]
