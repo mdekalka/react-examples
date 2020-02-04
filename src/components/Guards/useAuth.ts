@@ -3,8 +3,8 @@ import { useState } from "react"
 export const TOP_SECRET = "SECRET_PERMISSIONS"
 
 export const useAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [roles, setRoles] = useState(TOP_SECRET)
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [roles, setRoles] = useState("asfd")
 
   const authenticate = () => {
     setTimeout(() => {
@@ -18,10 +18,13 @@ export const useAuth = () => {
     }, 2000)
   }
 
+  const resetRole = () => setRoles("")
+
   return {
     isAuthenticated,
     roles,
     authenticate,
-    deny
+    deny,
+    resetRole
   }
 }

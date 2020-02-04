@@ -5,7 +5,7 @@ import { UsersHOC, UsersParamsHOC } from "./components/UsersHOC"
 import { Users } from "./components/UsersRenderProps"
 import { Users as UsersHooks } from "./components/UsersHook"
 import { WithHookContext } from "./components/WithHookContext"
-import { Guards } from "./"
+import { Guards } from "./components/Guards"
 
 const App = () => {
   return (
@@ -16,8 +16,10 @@ const App = () => {
       <Users />
       <hr/>
       <UsersHooks />
-      <br/>
+      <hr/>
       <WithHookContext />
+      <hr/>
+      <Guards />
     </div>
   );
 }
