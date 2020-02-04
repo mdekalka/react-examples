@@ -5,6 +5,7 @@ import { UsersHOC, UsersParamsHOC } from "./components/UsersHOC"
 import { Users } from "./components/UsersRenderProps"
 import { Users as UsersHooks } from "./components/UsersHook"
 import { WithHookContext } from "./components/WithHookContext"
+import { Guards } from "./"
 
 const App = () => {
   return (
