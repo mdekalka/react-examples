@@ -18,7 +18,7 @@ const GuardRoutes = ({ guard, children }: Props) => {
     }
 
     callGuard()
-  }, [])
+  }, [guard])
 
   if (!ready) {
     return null
