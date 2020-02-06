@@ -6,6 +6,7 @@ import { Users as UsersRenderProps } from "./components/UsersRenderProps"
 import { Users as UsersHooks } from "./components/UsersHook"
 import { WithHookContext } from "./components/WithHookContext"
 import { Guards } from "./components/Guards"
+import { ModalPortal } from "./components/Portal"
 
 import "./App.css";
 
@@ -20,6 +21,7 @@ const App = () => {
           <li><Link className="nav-link" to="/hooks">Users hooks</Link></li>
           <li><Link className="nav-link" to="/context-hook">Context hook</Link></li>
           <li><Link className="nav-link" to="/route-guards">Route guards</Link></li>
+          <li><Link className="nav-link" to="/portal">Modal portal</Link></li>
         </ul>
         <Switch>
           <Route path="/hoc">
@@ -44,6 +46,10 @@ const App = () => {
 
           <Route path="/route-guards">
             <Guards />
+          </Route>
+
+          <Route path="/portal">
+            <ModalPortal />
           </Route>
         </Switch>
       </Router>
