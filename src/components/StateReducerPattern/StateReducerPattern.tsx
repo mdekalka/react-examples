@@ -11,10 +11,11 @@ export const StateReducerPattern = () => {
     reducer(currentState: State, action: ActionChange) {
       if (alertClicksCount && action.type === Actions.toggle) {
         // other changes are fine, but on needs to be unchanged
-        return {...action.changes, on: currentState.on}
+        // P.S. <currentState> is actually old state w/o changes applied from action
+        return { ...action.state, on: currentState.on }
       } else {
         // the changes are fine
-        return action.changes
+        return action.state
       }
     }
   })

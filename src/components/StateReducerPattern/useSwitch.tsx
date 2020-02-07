@@ -25,7 +25,7 @@ type DisableAction = {
 export type ReducerActions = ToggleAction | EnableeAction | DisableAction
 
 export type ActionChange = {
-  changes: State
+  state: State
 } & ReducerActions
 
 type Props = {
@@ -57,7 +57,7 @@ export const useSwitch = ({ reducer }: Props) => {
   const [{ on }, dispatch] = useReducer<Reducer<State, ReducerActions>>((state, action) => {
     const changes = switchReducer(state, action)
 
-    return reducer(state, { ...action, changes })
+    return reducer(state, { ...action, state: changes })
   }, initialState)
 
   const onToggle = () => dispatch({ type: Actions.toggle })
