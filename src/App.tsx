@@ -7,6 +7,7 @@ import { Users as UsersHooks } from "./components/UsersHook"
 import { WithHookContext } from "./components/WithHookContext"
 import { Guards } from "./components/Guards"
 import { ModalPortal } from "./components/Portal"
+import { StateReducerPattern } from "./components/StateReducerPattern"
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ const App = () => {
           <li><Link className="nav-link" to="/context-hook">Context hook</Link></li>
           <li><Link className="nav-link" to="/route-guards">Route guards</Link></li>
           <li><Link className="nav-link" to="/portal">Modal portal</Link></li>
+          <li><Link className="nav-link" to="/state-reducer">State reducer pattern</Link></li>
         </ul>
         <Switch>
           <Route path="/hoc">
@@ -50,6 +52,10 @@ const App = () => {
 
           <Route path="/portal">
             <ModalPortal />
+          </Route>
+
+          <Route path="/state-reducer">
+            <StateReducerPattern />
           </Route>
         </Switch>
       </Router>
