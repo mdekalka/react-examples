@@ -8,6 +8,7 @@ import { WithHookContext } from "./components/WithHookContext"
 import { Guards } from "./components/Guards"
 import { ModalPortal } from "./components/Portal"
 import { StateReducerPattern } from "./components/StateReducerPattern"
+import { ProductsReduxToolkit } from "./components/ReduxTookit"
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ const App = () => {
           <li><Link className="nav-link" to="/route-guards">Route guards</Link></li>
           <li><Link className="nav-link" to="/portal">Modal portal</Link></li>
           <li><Link className="nav-link" to="/state-reducer">State reducer pattern</Link></li>
+          <li><Link className="nav-link" to="/redux-toolkit">Products redux toolkit</Link></li>
         </ul>
         <Switch>
           <Route path="/hoc">
@@ -56,6 +58,10 @@ const App = () => {
 
           <Route path="/state-reducer">
             <StateReducerPattern />
+          </Route>
+
+          <Route path="/redux-toolkit">
+            <ProductsReduxToolkit />
           </Route>
         </Switch>
       </Router>
