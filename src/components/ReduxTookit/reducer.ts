@@ -9,7 +9,7 @@ import {
 } from "./actions"
 import { Product } from "./types"
 
-interface State {
+export interface State {
   products: Product[]
   meta: {
     fetching: boolean,
@@ -42,10 +42,11 @@ export const reducer = createReducer(initialState, {
   },
 
   [addProductSuccess.type]: (state, action) => {
-    state.products
+    // Actually, in real world you should be more specific and get data by named property like: <action.payload.products/action.payload.id>
+    state.products.push(action.payload)
   },
 
   [removeProductSuccess.type]: (state, action) => {
-
+    state.products = state.products.filter(({ id }) => id !== action.payload)
   }
 })

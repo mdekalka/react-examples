@@ -1,6 +1,6 @@
 import { Product } from "./types"
 
-export const delay = (ms: number = 3000) => new Promise((resolve) => setTimeout(resolve, ms))
+export const delay = (ms: number = 1500) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let products = [
   { id: 1, type: "Jewelery", price: 1232 },
@@ -13,7 +13,7 @@ let products = [
 export const getProducts = async () => {
   await delay()
 
-  return products
+  return [...products]
 }
 
 export const createProduct = async (product: Product) => {
