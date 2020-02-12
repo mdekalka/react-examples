@@ -17,7 +17,7 @@ export interface State {
   }
 }
 
-const initialState: State  = {
+export const initialState: State  = {
   products: [],
   meta: {
     fetching: false,
@@ -50,3 +50,4 @@ export const reducer = createReducer(initialState, {
     state.products = state.products.filter(({ id }) => id !== action.payload)
   }
 })
+

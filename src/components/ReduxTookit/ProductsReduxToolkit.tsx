@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { Provider, useDispatch, useSelector } from 'react-redux'
 
 import { store } from "./store"
@@ -68,13 +68,21 @@ const ProductsPanel = ({ products, onProductRemove, onProductAdd }: Props) => {
 }
 
 const ProductsContainer = () => {
-  const products = useSelector((state: any) => state.reducer.products)
+  const products = useSelector((state: State) => state.products)
   const dispatch = useDispatch()
-  const { fetching, error } = useSelector((state: any) => state.reducer.meta)
+  const { fetching, error } = useSelector((state: State) => state.meta)
 
   useEffect(() => {
     dispatch(fetchProducts())
   }, [])
+
+  const onProductRemove = useCallback((id: number) => {
+    dispatch(removeProduct(id))
+  }, [dispatch])
+
+  const onProductAdd = useCallback((product: Product) => {
+    dispatch(addProduct(product))
+  }, [dispatch])
 
   if (fetching) {
     return <div>Loading...</div>
@@ -88,8 +96,8 @@ const ProductsContainer = () => {
     <div>
       <ProductsPanel
         products={products}
-        onProductRemove={(id) => dispatch(removeProduct(id))}
-        onProductAdd={(product) => dispatch(addProduct(product))}
+        onProductRemove={onProductRemove}
+        onProductAdd={onProductAdd}
       />
     </div>
   )

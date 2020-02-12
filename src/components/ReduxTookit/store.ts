@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import * as reducers from './reducer';
+// import * as reducers from './reducer';
+import { reducer } from "./slice"
 
 const middleware = getDefaultMiddleware({
   immutableCheck: false,
@@ -8,7 +9,7 @@ const middleware = getDefaultMiddleware({
 });
 
 export const store = configureStore({
- reducer: { ...reducers },
+ reducer,
  middleware,
  devTools: process.env.NODE_ENV !== 'production',
 });

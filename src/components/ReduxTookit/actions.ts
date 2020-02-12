@@ -2,6 +2,7 @@ import { createAction, Dispatch } from "@reduxjs/toolkit"
 
 import { getProducts, createProduct, deleteProduct } from "./api"
 import { Product } from "./types"
+import { actions } from './slice'
 
 export const fetchProductsLoading = createAction("FETCH_PRODUCTS_LOADING")
 export const fetchProductsSuccess = createAction<Product[]>("FETCH_PRODUCTS_SUCCESS")
@@ -11,24 +12,24 @@ export const addProductSuccess = createAction<Product>("ADD_PRODUCT_SUCCESS")
 export const removeProductSuccess = createAction<number>("REMOVE_PRODUCT_SUCCESS")
 
 export const fetchProducts = () => async (dispatch: Dispatch) => {
-  dispatch(fetchProductsLoading())
+  dispatch(actions.fetchProductsLoading())
 
   try {
     const products = await getProducts()
-    dispatch(fetchProductsSuccess(products))
+    dispatch(actions.fetchProductsSuccess(products))
   } catch (e) {
-    dispatch(fetchProductsError(e.message))
+    dispatch(actions.fetchProductsError(e.message))
   }
 }
 
 export const addProduct = (product: Product) => async (dispatch: Dispatch) => {
   await createProduct(product)
 
-  dispatch(addProductSuccess(product))
+  dispatch(actions.addProductSuccess(product))
 }
 
 export const removeProduct = (id: number) => async (dispatch: Dispatch) => {
   await deleteProduct(id)
 
-  dispatch(removeProductSuccess(id))
+  dispatch(actions.removeProductSuccess(id))
 }
