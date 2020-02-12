@@ -1,6 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit"
 
-import {fetchProductsLoading, fetchProductsSuccess, fetchProductsError} from "./actions"
+import {
+  fetchProductsLoading,
+  fetchProductsSuccess,
+  fetchProductsError,
+  addProductSuccess,
+  removeProductSuccess
+} from "./actions"
 import { Product } from "./types"
 
 interface State {
@@ -33,5 +39,13 @@ export const reducer = createReducer(initialState, {
   [fetchProductsError.type]: (state, action) => {
     state.meta.error = action.payload
     state.meta.fetching = false
+  },
+
+  [addProductSuccess.type]: (state, action) => {
+    state.products
+  },
+
+  [removeProductSuccess.type]: (state, action) => {
+
   }
 })

@@ -16,7 +16,7 @@ export const getProducts = async () => {
   return products
 }
 
-export const addProduct = async (product: Product) => {
+export const createProduct = async (product: Product) => {
   await delay()
 
   products.push(product)
