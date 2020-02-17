@@ -14,12 +14,12 @@ const App = () => {
           ))}
         </ul>
         <Switch>
-          {navigationSchema.map(({ path, component, props }) => {
+          {navigationSchema.map(({ path, component }) => {
             const Component: any = component
 
             return (
               <Route path={path}>
-                <Component {...props} />
+                <Component />
               </Route>
             )
           })}

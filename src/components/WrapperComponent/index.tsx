@@ -3,11 +3,7 @@ import React, { useState } from "react"
 import { generateId } from "../../utils"
 import { InjectedProps } from "../../typings/types"
 
-interface Props {
-  title: string
-}
-
-const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props & InjectedProps) => {
+const WrapperComponent = ({ users, onUserAdd, onUserRemove }: InjectedProps) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -30,7 +26,6 @@ const WrapperComponent = ({ title, users, onUserAdd, onUserRemove }: Props & Inj
 
   return (
     <div>
-      <h4>{title}</h4>
       <form onSubmit={onUserSubmit}>
         <div>
           <input type="text" name="name" value={name} onChange={onChangeName} autoFocus />

@@ -12,9 +12,6 @@ export const navigationSchema = [
       id: 1,
       path: "/hoc",
       pathTitle: "Users HOC",
-      props: {
-        title: "With users HOC"
-      },
       component: UsersHOC
     },
 
@@ -22,9 +19,6 @@ export const navigationSchema = [
       id: 2,
       path: "/params-hoc",
       pathTitle: "Users params HOC",
-      props: {
-        title: "with users params HOC"
-      },
       component: UsersParamsHOC
     },
 
