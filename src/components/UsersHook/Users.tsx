@@ -15,6 +15,6 @@ export const Users = () => {
   }
 
   return (
-    <WrapperComponent {...restProps} title="users via hooks" />
+    <WrapperComponent {...restProps} />
   )
 }
